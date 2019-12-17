@@ -35,13 +35,15 @@ class Game extends Component {
     this.doScore = this.doScore.bind(this);
   }
   toggleLocked(idx) {
-    this.setState(currState => ({
-      locked: [
-        ...currState.locked.slice(0, idx),
-        !currState.locked[idx],
-        ...currState.locked.slice(idx + 1)
-      ]
-    }));
+    if (this.state.rollsLeft > 0) {
+      this.setState(currState => ({
+        locked: [
+          ...currState.locked.slice(0, idx),
+          !currState.locked[idx],
+          ...currState.locked.slice(idx + 1)
+        ]
+      }));
+    }
   }
 
   roll(evt) {
@@ -78,9 +80,11 @@ class Game extends Component {
             />
             <div className="Game-button-wrapper">
               <button
-                className="Game-rerol"
+                className="Game-reroll"
                 onClick={this.roll}
-                disabled={this.state.locked.every(x => x)}
+                disabled={
+                  this.state.locked.every(x => x) || this.state.rollsLeft === 0
+                }
               >
                 {this.state.rollsLeft} Rerolls Left
               </button>
