@@ -109,7 +109,7 @@ const largeStraight = new LargeStraight({ score: 40 });
 // yahtzee scores as 50
 const yahtzee = new Yahtzee({ score: 50 });
 
-// for chance, can view as some of all dice, requiring at least 0 of a kind
+// for chance, can view as sum of all dice, requiring at least 0 of a kind
 const chance = new SumDistro({ count: 0 });
 
 export {
