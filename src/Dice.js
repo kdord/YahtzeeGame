@@ -13,6 +13,7 @@ class Dice extends Component {
             idx={idx}
             key={idx}
             handleClick={this.props.handleClick}
+            disabled={this.props.disabled}
           />
         ))}
       </div>
