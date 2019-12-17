@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Die from "./Die";
 
 class Dice extends Component {
   render() {
@@ -10,6 +11,7 @@ class Dice extends Component {
             locked={this.props.locked[idx]}
             idx={idx}
             key={idx}
+            handleClick={this.props.handleClick}
           />
         ))}
       </div>

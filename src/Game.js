@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Dice from "./Dice";
 
 const NUM_DICE = 5;
 const NUM_ROLLS = 3;
@@ -27,6 +28,16 @@ class Game extends Component {
         chance: undefined
       }
     };
+    this.toggleLocked = this.toggleLocked.bind(this);
+  }
+  toggleLocked(idx) {
+    this.setState(currState => ({
+      locked: [
+        ...currState.locked.slice(0, idx),
+        !currState.locked[idx],
+        ...currState.locked.slice(idx + 1)
+      ]
+    }));
   }
 
   render() {
@@ -35,7 +46,11 @@ class Game extends Component {
         <header className="Game-header">
           <h1>Yahtzee!</h1>
           <section className="Game-dice-section">
-            <Dice dice={this.state.dice} locked={this.state.locked} />
+            <Dice
+              dice={this.state.dice}
+              locked={this.state.locked}
+              handleClick={this.toggleLocked}
+            />
           </section>
         </header>
       </div>
