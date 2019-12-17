@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Die from "./Die";
+import "./Dice.css";
 
 class Dice extends Component {
   render() {
@@ -7,7 +8,7 @@ class Dice extends Component {
       <div className="Dice">
         {this.props.dice.map((die, idx) => (
           <Die
-            value={die}
+            val={die}
             locked={this.props.locked[idx]}
             idx={idx}
             key={idx}
